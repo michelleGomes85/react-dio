@@ -77,4 +77,14 @@ export const Input = styled.input`
     flex: 1;
     border: 0;
     color: #FFF;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+
+    &:focus-visible {
+        outline: none;
+        border: none;
+    }
 `
