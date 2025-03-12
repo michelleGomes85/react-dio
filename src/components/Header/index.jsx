@@ -2,15 +2,14 @@ import React from "react"
 
 import {
     SearchInputContainer,
-    Column,
     Container,
     Input,
     Menu,
     MenuRight,
     Row,
-    UserPicture,
     Wrapper
 } from './styles';
+
 import { Button } from "../Button";
 
 const Header = () => {

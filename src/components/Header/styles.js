@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
@@ -33,16 +33,20 @@ export const Wrapper = styled.div`
 `
 
 export const SearchInputContainer = styled.div`
-    width: 175px;
+    width: 200px;
     height: 30px;
-    background: #202037;
+    background: #2D2D37;
     border-radius: 8px;
     padding: 2px 5px;
     margin: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
 `
 
-export const Menu = styled.div`
-    font-family: 'Open Sans';
+export const Menu = styled.a`
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 12px;
     line-height: 25px;
@@ -51,8 +55,8 @@ export const Menu = styled.div`
     text-decoration: none;
 `
 
-export const MenuRight = styled.div`
-    font-family: 'Open Sans';
+export const MenuRight = styled.a`
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 12px;
     line-height: 25px;
