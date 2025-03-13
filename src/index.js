@@ -11,6 +11,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-
-// https://github.com/digitalinnovationone/trilha-react-desafio-3/blob/master/src/components/Header/index.jsx
