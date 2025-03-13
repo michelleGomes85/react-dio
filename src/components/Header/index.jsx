@@ -12,12 +12,14 @@ import {
 
 import { Button } from "../Button";
 
+import logo from '../../assets/logo-dio.png';
+
 const Header = () => {
   return (
     <Wrapper>
         <Container>
             <Row>
-                <img src="" alt="logo da dio"></img>
+                <img src={logo} alt="Logo da dio"/>
                 <SearchInputContainer>
                     <Input placeholder="Buscar ..." />
                 </SearchInputContainer>
