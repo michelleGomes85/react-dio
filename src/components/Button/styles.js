@@ -13,7 +13,7 @@ export const ButtonContainer = styled.button`
     cursor: pointer;
     transition: all 0.3s ease;
 
-    ${({ variant }) => variant !== "primary" && css`
+    ${({ $variant }) => $variant !== "primary" && css`
         min-width: 167px;
         height: 33px;
         background: #E4105D;
