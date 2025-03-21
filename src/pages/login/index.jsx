@@ -8,6 +8,7 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 
+import { api } from "../../services/api";
 import { Column, Container, CreateText, ForgotText, Row, SubTitleLogin, Title, TitleLogin, Wrapper } from "./styles";
 
 const schema = yup.object({
@@ -28,15 +29,21 @@ const Login = () => {
     }
   });
 
-  console.log(isValid, errors);
-
-  const onSubmit = (data, event) => {
-    event.preventDefault(); 
-    console.log(data);
+  const onSubmit = async (formData, event) => {
+    try {
+      const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
+      if (data.length === 1) {
+        navigate('/feed');
+      } else {
+        alert("Email ou senha inválido")
+      }
+    } catch (error) {
+      alert('Houve algum erro, tente novamente');
+    }
   };
 
   const handleSignUp = () => {
-    navigate('/register');
+    navigate('/feed');
   };
 
   return (
