@@ -20,7 +20,7 @@ const Login = () => {
   
   const navigate = useNavigate();
 
-  const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
@@ -42,8 +42,8 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = () => {
-    navigate('/feed');
+  const handleRegister = () => {
+    navigate('/register');
   };
 
   return (
@@ -69,7 +69,7 @@ const Login = () => {
 
             <Row>
               <ForgotText>Esqueci minha senha</ForgotText>
-              <CreateText onClick={handleSignUp}>Criar Conta</CreateText>
+              <CreateText onClick={handleRegister}>Criar Conta</CreateText>
             </Row>
           </Wrapper>
         </Column>

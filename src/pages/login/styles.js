@@ -79,4 +79,6 @@ export const CreateText = styled.h2`
     line-height: 19px;
 
     color: #E230D7;
+
+    cursor: pointer;
 `

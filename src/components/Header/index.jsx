@@ -11,8 +11,16 @@ const Header = ({authentication}) => {
 
     const navigate = useNavigate();
 
-    const handleClickSignIn = () => {
+    const handleClickRoot = () => {
         navigate('/')
+    }
+
+    const handleClickSignIn = () => {
+        navigate('/login')
+    }
+
+    const handleClickRegister = () => {
+        navigate('/register')
     }
 
     return (
@@ -24,7 +32,7 @@ const Header = ({authentication}) => {
                     src={logo} 
                     alt="Logo da dio" 
                     style={{ cursor: 'pointer' }} 
-                    onClick={handleClickSignIn} 
+                    onClick={handleClickRoot} 
                 />
 
                 {authentication ? (
@@ -43,8 +51,8 @@ const Header = ({authentication}) => {
                 ) : (
                 <>
                     <MenuRight href="/">Home</MenuRight>
-                    <Button title="Entrar" />
-                    <Button title="Cadastrar" />
+                    <Button title="Entrar" onClick={handleClickSignIn} />
+                    <Button title="Cadastrar" onClick={handleClickRegister}/>
                 </>)}
             </Row>
         </Container>
