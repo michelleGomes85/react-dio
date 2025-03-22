@@ -1,12 +1,71 @@
 import { Header } from "../../components/Header";
 
+import { useNavigate  } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+
+import { Column, Container,TermsOfUse, HaveAccount, LinkCreateAccount, SubTitleRegister, Title, TitleRegister, Wrapper } from "./styles";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object({
+    name: yup.string().min(12, 'Nome completo minimo 12 caracteres').required('Campo obrigatório'),
+    email: yup.string().email('O email não é válido').required('Campo obrigatório'),
+    password: yup.string().min(3, 'No mínimo 3 caracteres').required('Campo obrigatório')
+}).required();
+
 const Register = () => {
 
-  return (
-    <>
-      <Header />
-    </>
-  );
+    const navigate = useNavigate();
+
+    const { control, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+        defaultValues: {
+            nome: "",
+            email: "",
+            password: ""
+        }
+    });
+
+    const handleClickSignIn = () => {
+        navigate('/login')
+    }
+
+    return (
+        <>
+        <Header />
+        <Container>
+            <Column>
+            <Title>
+            A plataforma para você aprender com experts, dominar as principais tecnologias e entrar mais rápido nas empresas mais desejadas.        
+            </Title>
+            </Column>
+
+            <Column>
+            <Wrapper>
+                <TitleRegister>Comece agora grátis</TitleRegister>
+                <SubTitleRegister>Crie sua conta e make the change._</SubTitleRegister>
+                <form>
+                <Input name="name" control={control} errorMessage={errors.name?.message} placeholder="Nome Completo" leftIcon={<MdPerson />} />
+                <Input name="email" control={control} errorMessage={errors.email?.message} placeholder="E-mail" leftIcon={<MdEmail />} />
+                <Input name="password" control={control} errorMessage={errors.password?.message} placeholder="Password" type="password" leftIcon={<MdLock />} />
+                <Button title="CRIAR MINHA CONTA" variant="secondary" type="button" />
+                </form>
+
+                
+                <TermsOfUse>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</TermsOfUse>
+                <HaveAccount>Já tenho conta.</HaveAccount>
+                <LinkCreateAccount onClick={handleClickSignIn}>Fazer login</LinkCreateAccount>
+            </Wrapper>
+            </Column>
+        </Container>
+        </>
+    );
 };
 
 export default Register;

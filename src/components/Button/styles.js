@@ -13,10 +13,15 @@ export const ButtonContainer = styled.button`
     cursor: pointer;
     transition: all 0.3s ease;
 
+    &:active {
+        transform: scale(0.95); /* Reduz o tamanho ao clicar para um efeito mais natural */
+    }
+
     ${({ $variant }) => $variant !== "primary" && css`
         min-width: 167px;
         height: 33px;
         background: #E4105D;
+        margin-top: 15px;
 
         &:hover {
             opacity: 0.8;
@@ -32,7 +37,7 @@ export const ButtonContainer = styled.button`
         }
     `}
 
-    &:active {
-        transform: scale(0.95); /* Reduz o tamanho ao clicar para um efeito mais natural */
-    }
+    ${({ $variant }) => $variant !== "secondary" && css`
+      margin-left: 20px;  
+    `}
 `;
