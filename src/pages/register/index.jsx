@@ -12,6 +12,8 @@ import { Column, Container,TermsOfUse, HaveAccount, LinkCreateAccount, SubTitleR
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import { api } from "../../services/api";
+
 const schema = yup.object({
     name: yup.string().min(12, 'Nome completo minimo 12 caracteres').required('Campo obrigatório'),
     email: yup.string().email('O email não é válido').required('Campo obrigatório'),
@@ -22,19 +24,37 @@ const Register = () => {
 
     const navigate = useNavigate();
 
-    const { control, formState: { errors } } = useForm({
+    const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
         mode: 'onChange',
         defaultValues: {
-            nome: "",
+            name: "",
             email: "",
             password: ""
         }
-    });
+    });    
 
     const handleClickSignIn = () => {
         navigate('/login')
     }
+
+    const handleRegister = async (data) => {
+        
+        try {
+            const response = await api.post("/users", {
+                name: data.name,
+                email: data.email,
+                senha: data.password
+            });
+    
+            console.log("Usuário criado com sucesso:", response.data);
+            alert("Usuário criado com sucesso!");
+            navigate("/login");
+        } catch (error) {
+            console.error("Erro ao registrar usuário:", error);
+            alert("Erro ao cadastrar usuário.");
+        }
+    };    
 
     return (
         <>
@@ -50,13 +70,12 @@ const Register = () => {
             <Wrapper>
                 <TitleRegister>Comece agora grátis</TitleRegister>
                 <SubTitleRegister>Crie sua conta e make the change._</SubTitleRegister>
-                <form>
-                <Input name="name" control={control} errorMessage={errors.name?.message} placeholder="Nome Completo" leftIcon={<MdPerson />} />
-                <Input name="email" control={control} errorMessage={errors.email?.message} placeholder="E-mail" leftIcon={<MdEmail />} />
-                <Input name="password" control={control} errorMessage={errors.password?.message} placeholder="Password" type="password" leftIcon={<MdLock />} />
-                <Button title="CRIAR MINHA CONTA" variant="secondary" type="button" />
+                <form onSubmit={handleSubmit(handleRegister)}>
+                    <Input name="name" control={control} errorMessage={errors.name?.message} placeholder="Nome Completo" leftIcon={<MdPerson />} />
+                    <Input name="email" control={control} errorMessage={errors.email?.message} placeholder="E-mail" leftIcon={<MdEmail />} />
+                    <Input name="password" control={control} errorMessage={errors.password?.message} placeholder="Password" type="password" leftIcon={<MdLock />} />
+                    <Button title="CRIAR MINHA CONTA" variant="secondary" type="button" />
                 </form>
-
                 
                 <TermsOfUse>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</TermsOfUse>
                 <HaveAccount>Já tenho conta.</HaveAccount>
