@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ButtonContainer = styled.button`
-    background: #565656;
+    background: transparent;
     border-radius: 22px;
     position: relative;
     color: #FFF;
@@ -38,6 +38,14 @@ export const ButtonContainer = styled.button`
     `}
 
     ${({ $variant }) => $variant !== "secondary" && css`
-      margin-left: 20px;  
+        margin-left: 20px;  
+
+        border: 1px solid #ffffff;
+        padding: 5px 12px;
+
+        &:hover {
+            background: #E4105D;
+            border: 1px solid #E4105D;
+        }
     `}
 `;

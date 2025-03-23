@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     max-width: 80%;
-    height: 47px;
+    height: 60px;
 
     display: flex;
     justify-content: space-between;
@@ -26,7 +26,7 @@ export const Column = styled.div`
 export const Wrapper = styled.div`
     background-color: #151515;
     width: 100%;
-    height: 47px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
