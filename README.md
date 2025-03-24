@@ -1,18 +1,38 @@
 # 🚀 Clone Simples da DIO com React
 
-Este projeto é um clone simples da interface da [DIO](https://www.dio.me/), desenvolvido para fins educacionais durante um curso introdutório de React. A aplicação possui navegação básica entre a página inicial e a página de login, sem autenticação.
+Este projeto é um clone simples da interface da [DIO](https://www.dio.me/), desenvolvido para fins educacionais durante um curso introdutório de React. A aplicação possui navegação básica entre a página inicial e a página de login, permitindo apenas o login de usuários cadastrados no arquivo `db.json`.
 
 ## 🛠 Tecnologias Utilizadas
 - ⚛️ React
 - 🌐 React Router
 - 🎨 Styled Components (estilização via `styles.js`)
+- 🔥 Axios (para requisições HTTP ao `db.json`)
+- ✅ Yup (para validação de formulários)
+- 🎭 React Hook Form (para manipulação de formulários)
 
 ## 📌 Funcionalidades
 - 🏠 Página inicial semelhante à da DIO
-- 🔐 Link para a página de login
-- 🔄 Estrutura simples para demonstração de navegação com React Router
+- 🔐 Sistema de login validado com `db.json`
+- 🆕 Cadastro de novos usuários via API fake
+- 🔄 Navegação entre páginas com React Router
 
-## 🚀 Como Executar o Projeto
+## 📂 Estrutura do Projeto
+```
+clone-dio-react/
+│-- src/
+│   │-- components/    # Componentes reutilizáveis
+│   │-- pages/         # Páginas principais (Home, Login, Cadastro)
+│   │-- services/      # Configuração da API (Axios)
+│   │-- styles/        # Estilização global
+│   │-- App.js         # Configuração principal do React Router
+│   │-- index.js       # Entrada principal da aplicação
+│-- public/
+│-- db.json            # Banco de dados fake (JSON Server)
+│-- package.json
+│-- README.md
+```
+
+## 🔧 Configurando o Ambiente
 
 1. Clone este repositório:
    ```bash
@@ -26,26 +46,20 @@ Este projeto é um clone simples da interface da [DIO](https://www.dio.me/), des
    ```bash
    npm install
    ```
-4. Inicie o servidor de desenvolvimento:
+4. Inicie o JSON Server para simular o backend:
+   ```bash
+   npx json-server --watch db.json --port 5000
+   ```
+5. Inicie o servidor de desenvolvimento:
    ```bash
    npm start
    ```
-5. Acesse no navegador: `http://localhost:3000`
+6. Acesse no navegador: `http://localhost:3000`
 
-## 📂 Estrutura do Projeto
-```
-clone-dio-react/
-│-- src/
-│   │-- components/    # Componentes reutilizáveis
-│   │-- pages/         # Páginas principais (Home, Login)
-│   │-- styles/
-│   │   |-- global.ls  # Css global para toda a aplicação
-│   │-- App.js         # Configuração principal do React Router
-│   │-- index.js       # Entrada principal da aplicação
-│-- public/
-│-- package.json
-│-- README.md
-```
+## 📜 Autenticação e Cadastro de Usuários
+- **Login**: Somente usuários cadastrados no `db.json` podem acessar.
+- **Cadastro**: Novos usuários são adicionados ao `db.json` via uma requisição `POST` com Axios.
+- **Validação**: O Yup é utilizado para validar e-mails e senhas nos formulários.
 
 ## 👩‍💻 Autora
 Desenvolvido por **Michelle Gomes**
