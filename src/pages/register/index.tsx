@@ -2,7 +2,7 @@ import { Header } from "../../components/Header";
 
 import { useNavigate  } from "react-router-dom";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
@@ -13,6 +13,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { api } from "../../services/api";
+
+type FormData = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 const schema = yup.object({
     name: yup.string().min(12, 'Nome completo minimo 12 caracteres').required('Campo obrigatório'),
@@ -38,7 +44,7 @@ const Register = () => {
         navigate('/login')
     }
 
-    const handleRegister = async (data) => {
+      const handleRegister: SubmitHandler<FormData> = async (data) => {
         
         try {
             const response = await api.post("/users", {
