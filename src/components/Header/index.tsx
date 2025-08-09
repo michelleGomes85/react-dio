@@ -1,13 +1,17 @@
 
 import React from 'react'
-import logo from '../../assets/logo-dio.png';
+import logo from '../../assets/logo-dio.png'
 import { useNavigate  } from "react-router-dom";
 
 import { Button } from '../Button';
 
 import { Container, Wrapper, SearchInputContainer, Input, Row, Menu, MenuRight, UserPicture} from './styles';
 
-const Header = ({authentication}) => {
+type HeaderProps = {
+  authentication?: boolean; 
+};
+
+const Header = ({ authentication = false }: HeaderProps) => {
 
     const navigate = useNavigate();
 

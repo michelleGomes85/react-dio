@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type ProgressProps = {
+  $percentual: number;
+};
+
 export const Container = styled.div`
     display:flex;
     flex-direction: row;
@@ -23,7 +27,7 @@ export const NameText = styled.div`
     color: #FFFFFF;
 ` 
 
-export const Progress = styled.div`
+export const Progress = styled.div<ProgressProps>`
     width: 180px;
     height: 6px;
     background-color: #FFFFFF;
@@ -35,7 +39,7 @@ export const Progress = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        width: ${({percentual}) => percentual}%;
+        width: ${({$percentual}) => $percentual}%;
         height: 6px;
         border-radius: 3px;
         background-color: #23DD7A;

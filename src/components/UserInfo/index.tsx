@@ -2,7 +2,13 @@ import React from 'react'
 
 import { Container, NameText, Progress, UserPicture} from './styles';
 
-const UserInfo = ({nome,image, percentual}) => {
+type UserInfoProps = {
+  nome: string;
+  image: string;
+  percentual: number;
+};
+
+const UserInfo = ({nome,image, percentual}: UserInfoProps) => {
   return (
     <Container>
         <UserPicture src={image} />
