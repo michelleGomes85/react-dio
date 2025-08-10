@@ -88,3 +88,20 @@ export const Input = styled.input`
         border: none;
     }
 `
+
+export const Name = styled.p`
+    margin-left: 12px;
+`
+
+export const LinkOut = styled.a`
+    margin-left: 30px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    padding: 5px 12px;
+    border-radius: 12px;
+
+    &:hover {
+        color: #23dd7a;
+        border: 1px solid #23dd7a;
+    }
+`

@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card } from '../../components/Card';
 import { UserInfo } from '../../components/UserInfo';
 
 import { Header } from '../../components/Header';
 
 import { Container, Column, Title, TitleHighlight } from './styles';
+import { AuthContext } from '../../context/auth';
 
 const Feed = () => {
+  
   return (
     <>
-        <Header authentication={true}/>
+        <Header/>
         <Container>
             <Column $flex={4}>
                 <Title>Feed</Title>

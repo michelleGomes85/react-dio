@@ -3,14 +3,13 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from 'react';
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
-
-import { api } from "../../services/api";
 import { Column, Container, CreateText, ForgotText, Row, SubTitleLogin, Title, TitleLogin, Wrapper } from "./styles";
-
+import { AuthContext } from "../../context/auth";
 
 type FormData = {
   email: string;
@@ -24,6 +23,7 @@ const schema = yup.object({
 
 const Login = () => {
   
+  const { handleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -36,16 +36,7 @@ const Login = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (formData) => {
-    try {
-      const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-      if (data.length === 1) {
-        navigate('/feed');
-      } else {
-        alert("Email ou senha inválido")
-      }
-    } catch (error) {
-      alert('Houve algum erro, tente novamente');
-    }
+    handleLogin(formData)
   };
 
   const handleRegister = () => {
