@@ -1,16 +1,15 @@
 
-import React, { useContext } from 'react'
 import logo from '../../assets/logo-dio.png'
 import { useNavigate  } from "react-router-dom";
 
 import { Button } from '../Button';
 
 import { Container, Wrapper, SearchInputContainer, Input, Row, Menu, MenuRight, UserPicture, Name, LinkOut} from './styles';
-import { AuthContext } from '../../context/auth';
+import { useAuth } from '../../hooks/useAuth';
 
 const Header = () => {
     
-    const { user, handleSignOut } = useContext(AuthContext);
+    const { user, handleSignOut } = useAuth();
 
     const navigate = useNavigate();
 

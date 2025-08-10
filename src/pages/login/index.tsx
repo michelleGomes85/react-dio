@@ -3,13 +3,12 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useContext } from 'react';
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { Column, Container, CreateText, ForgotText, Row, SubTitleLogin, Title, TitleLogin, Wrapper } from "./styles";
-import { AuthContext } from "../../context/auth";
+import { useAuth } from "../../hooks/useAuth";
 
 type FormData = {
   email: string;
@@ -23,7 +22,7 @@ const schema = yup.object({
 
 const Login = () => {
   
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const { control, handleSubmit, formState: { errors } } = useForm({

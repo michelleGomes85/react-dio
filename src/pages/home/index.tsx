@@ -5,13 +5,12 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 
 import { Container, TextContent, Title, TitleHighlight } from "./styles";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth";
+import { useAuth } from "../../hooks/useAuth";
 
 const Home = () => {
 
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   const handleClickSignIn = () => {
     (user.id) ? navigate('/feed') : navigate('/login');
