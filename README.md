@@ -5,7 +5,7 @@ Este projeto é um clone simples da interface da [DIO](https://www.dio.me/), des
 ## 🛠 Tecnologias Utilizadas
 - ⚛️ React
 - 🌐 React Router
-- 🎨 Styled Components (estilização via `styles.js`)
+- 🎨 Styled Components (estilização via `styles.ts`)
 - 🔥 Axios (para requisições HTTP ao `db.json`)
 - ✅ Yup (para validação de formulários)
 - 🎭 React Hook Form (para manipulação de formulários)
@@ -18,16 +18,18 @@ Este projeto é um clone simples da interface da [DIO](https://www.dio.me/), des
 
 ## 📂 Estrutura do Projeto
 ```
-clone-dio-react/
+react-dio/
 │-- src/
-│   │-- components/    # Componentes reutilizáveis
+│   │-- components/    # Componentes reutilizáveis (.tsx)
 │   │-- pages/         # Páginas principais (Home, Login, Cadastro)
 │   │-- services/      # Configuração da API (Axios)
-│   │-- styles/        # Estilização global
-│   │-- App.js         # Configuração principal do React Router
-│   │-- index.js       # Entrada principal da aplicação
+│   │-- styles/        # Estilização global (.ts)
+│   │-- types/         # Definições e interfaces TypeScript
+│   │-- App.tsx        # Configuração principal do React Router
+│   │-- main.tsx       # Entrada principal da aplicação
 │-- public/
 │-- db.json            # Banco de dados fake (JSON Server)
+│-- tsconfig.json      # Configuração do TypeScript
 │-- package.json
 │-- README.md
 ```
